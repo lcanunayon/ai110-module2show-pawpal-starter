@@ -102,6 +102,12 @@ All 36 tests pass. The suite covers every public method on `Scheduler`, both hap
 
 ---
 
+## Demo
+
+![PawPal+ app screenshot](palscreen.jpg)
+
+---
+
 ## Getting started
 
 ### Setup
