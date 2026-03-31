@@ -73,6 +73,35 @@ exception, so the caller can print warnings without risking a crash.
 
 ---
 
+## Testing PawPal+
+
+### Run the test suite
+
+```bash
+python -m pytest tests/test_pawpal.py -v
+```
+
+### What the tests cover
+
+| Area | # Tests | Description |
+|---|---|---|
+| Task basics | 6 | `complete()`, `reset()`, `describe()` formatting (time, due date, status label) |
+| Pet basics | 6 | Adding/removing tasks, `get_pending_tasks`, happiness and fullness clamping at 100 |
+| Sorting | 5 | Chronological order, unscheduled tasks sort last, tie-breaking by priority then duration, future due-date exclusion |
+| Recurrence | 8 | Daily/weekly spawning with correct next `due_date`, `once` tasks never spawn, `reset_tasks` idempotence, walk/feed stat effects |
+| Conflict detection | 5 | `SAME-PET` and `CROSS-PET` warnings, sequential tasks don't conflict, unscheduled tasks skipped, exact same start time |
+| Edge cases | 6 | Empty pet roster, unknown pet or task title, unknown pet in filter |
+
+**Total: 36 tests**
+
+### Confidence level
+
+★★★★★ (5/5)
+
+All 36 tests pass. The suite covers every public method on `Scheduler`, both happy paths and the edge cases most likely to hide bugs (empty inputs, boundary dates, duplicate start times, clamping). The one area not unit-tested is the Streamlit UI layer in `app.py` — that would require browser-level integration tests.
+
+---
+
 ## Getting started
 
 ### Setup
