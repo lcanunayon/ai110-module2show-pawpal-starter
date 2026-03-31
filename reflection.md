@@ -3,8 +3,13 @@
 ## 1. System Design
 
 **a. Initial design**
+I should be able to add a pet, schedule a walk, and schedule feeding times. These are core features that are part of the UML design.
 
-- Briefly describe your initial UML design.
+
+- Briefly describe your initial UML design. 
+
+
+
 - What classes did you include, and what responsibilities did you assign to each?
 
 **b. Design changes**
