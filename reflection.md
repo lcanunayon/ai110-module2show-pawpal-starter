@@ -7,16 +7,20 @@ I should be able to add a pet, schedule a walk, and schedule feeding times. Thes
 
 
 - Briefly describe your initial UML design. 
-
+My initial UML design consists of 4 classes with 4 edges connecting the entire design. Owner class is the first class, connecting to pet and schedule classes, schedule classes go to caretask, and caretask goes to pet as well.
 
 
 - What classes did you include, and what responsibilities did you assign to each?
+It features a owner class with attributes name, age, gender, budget, and pets; containing methods addPet which connects to the pet class, remove pet, generateSchedule which uses the schedule class and a date, and adjust budget taking a float amount for budget. There are classes owner which conects to pet and schedule classes, schedule class can have a task added or removed and etc. It connects to the caretask class which details the care in which the pets are recieving, finally connecting back to the pet class.
+
 
 **b. Design changes**
 
 - Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+Yes, the changes were adding a owner reference to the schedule class, and fixing the general schedule only taking a date and adding more thigns like task duration, priority, or budget. I made these changes because these could possibly cause logic breaks especially when a schedule is not contained in the owner class, and a non detailed generating schedule method. 
 
+- If yes, describe at least one change and why you made it.
+^^^above
 ---
 
 ## 2. Scheduling Logic and Tradeoffs
@@ -24,6 +28,8 @@ I should be able to add a pet, schedule a walk, and schedule feeding times. Thes
 **a. Constraints and priorities**
 
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
+
+
 - How did you decide which constraints mattered most?
 
 **b. Tradeoffs**
