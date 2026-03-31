@@ -1,0 +1,68 @@
+classDiagram
+    direction TB
+
+    class Task {
+        +str title
+        +str description
+        +int duration_minutes
+        +str priority
+        +str task_type
+        +str frequency
+        +Optional~str~ scheduled_time
+        +Optional~date~ due_date
+        +bool completed
+        +complete()
+        +reset()
+        +describe() str
+        -_start_minutes() Optional~int~
+        -_end_minutes() Optional~int~
+    }
+
+    class Pet {
+        +str name
+        +str species
+        +str fur_color
+        +int happiness_level
+        +int fullness
+        +List~Task~ tasks
+        +add_task(task)
+        +remove_task(title)
+        +get_pending_tasks() List~Task~
+        +apply_walk()
+        +apply_feeding()
+        +get_status() str
+    }
+
+    class Owner {
+        +str name
+        +int age
+        +str gender
+        +float budget
+        +List~Pet~ pets
+        +add_pet(pet)
+        +remove_pet(pet_name)
+        +get_pet(pet_name) Optional~Pet~
+        +get_all_tasks() List~tuple~
+        +adjust_budget(amount)
+    }
+
+    class Scheduler {
+        +Owner owner
+        -Optional~date~ _last_daily_reset
+        -Optional~date~ _last_weekly_reset
+        +get_all_pending(today) List~tuple~
+        +get_tasks_for_pet(pet_name) List~tuple~
+        +get_tasks_by_status(status) List~tuple~
+        +sort_by_time(pairs) List~tuple~
+        +filter_tasks(pet_name, status) List~tuple~
+        +build_schedule(today) List~tuple~
+        +reset_tasks(today) dict
+        +reset_daily_tasks()
+        +complete_task(pet_name, task_title, today) Optional~Task~
+        +detect_conflicts(today) List~str~
+        +explain_plan(today) str
+    }
+
+    Owner "1" *-- "0..*" Pet : owns
+    Pet   "1" *-- "0..*" Task : has
+    Scheduler "1" --> "1" Owner : manages
